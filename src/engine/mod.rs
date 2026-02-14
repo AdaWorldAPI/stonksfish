@@ -2,7 +2,7 @@ use super::util::print::print_board;
 use chess::{Board, Color, Game, GameResult};
 use player::Player;
 
-mod evaluation;
+pub mod evaluation;
 pub mod player;
 pub mod search;
 
