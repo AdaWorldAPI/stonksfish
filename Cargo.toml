@@ -1,9 +1,9 @@
 [package]
 name = "stonksfish"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Claus Martinsen <clauswrm@gmail.com>"]
 edition = "2021"
-description = "Chess engine with UCI support and multi-agent AI integration"
+description = "Chess engine with UCI support, multi-agent AI integration, and Lichess bot with game harvesting"
 
 [profile.dev]
 opt-level = 3
@@ -12,6 +12,7 @@ opt-level = 3
 opt-level = 3
 
 [dependencies]
+async-trait = "0.1"
 chess = "3.2.0"
 colored = "2.0.0"
 dotenv = "0.15.0"
@@ -23,11 +24,17 @@ serde_json = "1"
 tokio = { version = "1.21.2", features = ["full"] }
 tokio-stream = "0.1.11"
 
-# UCI binary (main.rs stays as lichess binary)
+# Original Lichess binary (basic, single-game)
 [[bin]]
 name = "stonksfish-lichess"
 path = "src/main.rs"
 
+# UCI engine for chess GUIs and lichess-bot bridge
 [[bin]]
 name = "stonksfish-uci"
 path = "src/bin/uci_main.rs"
+
+# Production Lichess bot with concurrent games + harvesting
+[[bin]]
+name = "stonksfish-ada"
+path = "src/bin/ada_main.rs"

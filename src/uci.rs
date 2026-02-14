@@ -231,7 +231,7 @@ fn parse_uci_move(board: &Board, move_str: &str) -> Option<ChessMove> {
 }
 
 /// Format a ChessMove as a UCI string (e.g., "e2e4", "e7e8q").
-fn format_move(m: ChessMove) -> String {
+pub fn format_move(m: ChessMove) -> String {
     let from = m.get_source();
     let to = m.get_dest();
     let promo = m.get_promotion().map(|p| match p {
